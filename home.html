@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <title>Floresce</title>
+</head>
+<body style="background-image: url('/fundo-limao.png');">
+        <nav class="navbar bg-body-tertiary" style="padding-top: 0px; padding-bottom: 0px;">
+  <div class="container-fluid" style="background-color: #374A32; padding: 0.5%; padding-left: 2.5%; padding-right: 2.5%;">
+    <a class="navbar-brand"><img style="height: 30px;" src="/floresce-logo.png" alt="Floresce Logo"></a>
+      <button type="button" class="btn btn-primary"
+        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 20px; --bs-btn-font-size: .79rem; background-color: #FBF4BC; border-color: #FBF4BC; font-weight: bold;" >
+  <a href="/login" style="color: #374A32; text-decoration: none;">LOGIN</a>
+</button>
+    </form>
+  </div>
+</nav>
+<ul class="nav" style="background-color: #FBF4BC; padding-top: 0px;">
+  <li class="nav-item" style="padding-right: 12%;">
+    <a class="nav-link" style="padding-top: 3%; padding-left: 0%;"><img src="linhazinha.png"></a>
+  </li>
+  <div style="display: flex; flex-direction: row; justify-content: center; width: 34%; align-items: center;">
+  <li class="nav-item" style="padding-right: 12%;">
+    <a class="nav-link" href="#" style="color: #374A32; font-weight: bold; font-size: .79rem; padding-top: 8%;">CHAT INTERATIVO</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#" style="color: #374A32; font-weight: bold; font-size: .79rem; padding-top: 8%;">NOSSA EQUIPE</a>
+  </li>
+  </div>
+  <li class="nav-item" style="padding-left: 11.95%;">
+    <a class="nav-link" style="padding-top: 3%; padding-right: 0%; width: 100%;"><img src="linhazinha.png"></a>
+  </li>
+</ul>
+<div style="padding-left: 6%; padding-top: 5%;">
+<p class="h2" style="color: #FBF4BC;">Bem-vindo a</p>
+<img style="height: 40px;" src="/floresce.png" alt="Floresce Logo">
+</div>
+<p class="h6" style="color: white; padding-left: 6%; padding-top: 2%; max-width: 550px;">Aprenda e se conscientize sobre segurança alimentar,
+obtendo ajuda através do nosso chat interativo com serviços como cálculo de calorias, auxiliar de nutrição e respostas com IA</p>
+<div style="padding-left: 6%; padding-top: 5%;">
+<p class="h6" style="color: #FBF4BC; padding-bottom: 0.5%;">Confira depoimentos de clientes reais</p>
+<button type="button" class="btn btn-primary"
+        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 20px; --bs-btn-font-size: .79rem; background-color: #FBF4BC; color: #374A32; border-color: #FBF4BC; font-weight: bold;" ><a href="/login" style="color: #374A32; text-decoration: none;">
+  DEPOIMENTOS</a>
+</button>
+</div>
+<figure class="text-center" style="padding-top: 5%; padding-bottom: 0%;">
+  <blockquote class="blockquote">
+    <p class="h6" style="color: white;">Não possui uma conta? <a href="#cadastro" class="scroll-link" style="color: #FBF4BC;">Cadastre-se</a></p>
+  </blockquote>
+</figure>
+<img src="setinha-baixo.png" class="rounded mx-auto d-block" alt="Ver mais" style="height: 30px;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<section class="cadastro" id="cadastro" style="background-image: url('/fundo-amarelo.png'); height: 60.5cap; margin-top: 0.4%;">
+    <div style="padding-bottom: 5%;"></div>
+    <div style="display: flex; align-items: center; background-image: url('/cadastro-login.png'); background-size: contain; background-repeat: no-repeat; background-position: center center; height: 500px; flex-direction: column;">
+        <h5 style="color: #374A32; font-weight: 700; padding-top: 4%;">Cadastro</h5>
+        <div>
+          <form action="/cadastro" method="POST">
+            <div class="mb-3" style="padding-top: 3%;">
+            <label for="exampleFormControlInput1" class="form-label" style="color: #374A32; font-weight: 500;">Nome</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome Completo" name="usuario" required style="
+      background-image: url('/usuario-icone.png');
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 5.5%;
+      padding-left: 40px;
+      width: 400px;
+      border-color: #374A32;
+    ">
+            </div>
+            <div class="mb-3" style="padding-top: 1%;">
+            <label for="exampleFormControlInput1" class="form-label" style="color: #374A32; font-weight: 500;">E-mail</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Endereço de e-mail" name="email" required style="
+      background-image: url('/@.png');
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 5.5%;
+      padding-left: 40px;
+      width: 400px;
+      border-color: #374A32;
+    ">
+            </div>
+            <div class="mb-3" style="padding-top: 1%;">
+            <label for="exampleFormControlInput1" class="form-label" style="color: #374A32; font-weight: 500;">Senha</label>
+            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Crie uma senha" name="senha" required style="
+      background-image: url('/senha-icone.png');
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 5.5%;
+      padding-left: 40px;
+      width: 400px;
+      border-color: #374A32;
+    ">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"
+        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 20px; background-color: #374A32; color: white; border-color: #FBF4BC; font-weight: 500; width: 12%; margin-top: 1%;">
+  Cadastrar
+</button>
+</form>
+    <h6 style="color: #374A32; font-size: .79rem; padding-top: 0.7%;">Já possui uma conta? <a href="/login" style="color: #374A32;">Faça Login</a></h6>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</section>
+</body>
+<style>
+  body{
+    font-family: "Sen";
+  }
+</style>
+</html>
