@@ -21,10 +21,7 @@ const urlMongo = 'mongodb+srv://giu:giu081008@giulianna.fkfgfak.mongodb.net/?app
 
 const connectDb = async () => {
   try {
-    await mongoose.connect(urlMongo, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(urlMongo);
     console.log("Conectado ao MongoDB com sucesso!");
   } catch (error) {
     console.error("Erro ao conectar ao MongoDB:", error);
