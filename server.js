@@ -17,7 +17,23 @@ app.use(session({
 app.use(express.static(__dirname + '/public'))
 app.use(methodOverride('_method'));
 
-const urlMongo = 'mongodb://127.0.0.1:27017';
+const urlMongo = 'mongodb+srv://giu:giu081008@cluster0.mongodb.net/giulianna?retryWrites=true&w=majority';
+const mongoose = require('mongoose');
+
+const connectDb = async () => {
+  try {
+    await mongoose.connect('mongodb+srv://giu:giu081008@cluster0.mongodb.net/giulianna?retryWrites=true&w=majority', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Conectado ao MongoDB com sucesso!");
+  } catch (error) {
+    console.error("Erro ao conectar ao MongoDB:", error);
+  }
+};
+
+connectDb();
+
 const nomeBanco = 'loginFloresce';
 const collection = 'usuarios';
 
