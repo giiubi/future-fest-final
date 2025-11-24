@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient, ObjectId } = require('mongodb');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 
@@ -17,12 +17,11 @@ app.use(session({
 app.use(express.static(__dirname + '/public'))
 app.use(methodOverride('_method'));
 
-const urlMongo = 'mongodb+srv://giu:giu081008@cluster0.mongodb.net/giulianna?retryWrites=true&w=majority';
-const mongoose = require('mongoose');
+const urlMongo = 'mongodb+srv://giu:giu081008@giulianna.fkfgfak.mongodb.net/?appName=giulianna';
 
 const connectDb = async () => {
   try {
-    await mongoose.connect('mongodb+srv://giu:giu081008@cluster0.mongodb.net/giulianna?retryWrites=true&w=majority', {
+    await mongoose.connect(urlMongo, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -34,8 +33,13 @@ const connectDb = async () => {
 
 connectDb();
 
-const nomeBanco = 'loginFloresce';
-const collection = 'usuarios';
+const usuarioSchema = new mongoose.Schema({
+    usuario: String,
+    email: String,
+    senha: String,
+});
+
+const Usuario = mongoose.model('Usuario', usuarioSchema);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/home.html');
@@ -46,29 +50,25 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.post('/cadastro', async (req, res) => {
-    const cliente = new MongoClient(urlMongo, {useUnifiedTopology: true });
     try {
-        await cliente.connect();
-        const banco = cliente.db(nomeBanco);
-        const colecaoUsuarios = banco.collection('usuarios');
-
-        const usuarioExistente = await colecaoUsuarios.findOne({ email: req.body.email });
+        const usuarioExistente = await Usuario.findOne({ email: req.body.email });
 
         if (usuarioExistente) {
             res.send("E-mail já cadastrado! Tente outro e-mail.");
         } else {
             const senhaCriptografada = await bcrypt.hash(req.body.senha, 10);
-            await colecaoUsuarios.insertOne({
+            const novoUsuario = new Usuario({
                 usuario: req.body.usuario,
                 email: req.body.email,
-                senha: senhaCriptografada
+                senha: senhaCriptografada,
             });
+
+            await novoUsuario.save();
             res.redirect('/login');
         }
     } catch (erro) {
+        console.error("Erro ao registrar o usuário:", erro);
         res.send("Erro ao registrar o usuário. Tente novamente");
-    } finally {
-        cliente.close();
     }
 });
 
@@ -77,16 +77,11 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const cliente = new MongoClient(urlMongo);
     try {
-        await cliente.connect();
-        const banco = cliente.db(nomeBanco);
-        const colecaoUsuarios = banco.collection('usuarios');
-
-        let usuario = await colecaoUsuarios.findOne({ email: req.body.email });
+        let usuario = await Usuario.findOne({ email: req.body.email });
 
         if (usuario) {
-            usuario = await colecaoUsuarios.findOne({ usuario: req.body.usuario });
+            usuario = await Usuario.findOne({ usuario: req.body.usuario });
         }
 
         if (usuario && await bcrypt.compare(req.body.senha, usuario.senha)) {
@@ -97,9 +92,7 @@ app.post('/login', async (req, res) => {
         }
     } catch (erro) {
         res.send("Erro ao realizar login. Tente novamente");
-    } finally {
-        cliente.close();
-    }   
+    }
 });
 
 function protegerChat(req, res, proximo) {
