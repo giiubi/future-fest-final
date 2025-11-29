@@ -124,3 +124,5 @@ app.get('/sair', (req, res) => {
 app.listen(porta, () => {
     console.log(`Servidor rodando na porta ${porta}`);
 });
+
+module.exports = app;
